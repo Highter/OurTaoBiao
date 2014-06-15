@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="configLocation"
+			value="classpath:hibernate.cfg.xml">
+		</property>
+	</bean>
+	
+	
+	
+	<bean name="BrandManager" class="com.dao.lyj.brand.BrandManagerImpl" scope="prototype"> 
+	<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean name="brand" class="com.models.Brand" scope="prototype" ></bean>
+	
+	<bean name ="BrandAction" class="com.actions.lyj.BrandAction" scope="prototype"> 
+	<property name="bm" ref="BrandManager" ></property>
+	</bean>
+	
+	
+	
+	
+	
+	
+	<bean name="BrandSeriesManager" class="com.dao.lyj.brandseries.BrandSeriesManagerImpl" scope="prototype">
+	<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean name="brandseries" class="com.models.BrandSeries" scope="prototype"></bean>
+	
+	<bean name="BrandSeriesAction" class="com.actions.lyj.BrandSeriesAction" scope="prototype">
+	<property name="bsm" ref="BrandSeriesManager"></property>
+	<property name="bma" ref="BrandManager" ></property>
+	</bean>
+	
+
+	
+	
+	
+	<bean name="MessageManager" class="com.dao.lyj.message.MessageManagerImpl" scope="prototype">
+	<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean name="message" class="com.models.Message" scope="prototype" ></bean>	
+	
+	<bean name="MessageAction" class="com.actions.lyj.MessageAction" scope="prototype">
+	<property name="mm" ref="MessageManager"></property>
+	</bean>
+	
+	
+	
+	
+	<bean name="CommodityManager" class="com.dao.lyj.commodity.CommodityManagerImpl" scope="prototype">
+	<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean name="commodity" class="com.models.Commodity" scope="prototype"></bean>
+	
+	<bean name="CommodityAction" class="com.actions.lyj.CommodityAction"  scope="prototype">
+	<property name="cm" ref="CommodityManager"></property>
+	<property name="bsm" ref="BrandSeriesManager"></property>
+	<property name="bm" ref="BrandManager" ></property>
+	</bean>
+</beans>

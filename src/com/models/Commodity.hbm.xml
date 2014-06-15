@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.models.Commodity" table="commodity_table" lazy="false">
+		<id name="commodityId">
+			<generator class="increment"/>
+		</id>
+		<property name="commodityName" length="50"/>
+		<property name="proPlace" length="30"/>
+		<property name="brandName" length="40"/>
+		<many-to-one name="brands" class="com.models.Brand" cascade="save-update" fetch="select" column="brandId" not-null="true" lazy="false"/>
+		<property name="brandSeriesName" length="30"/>
+		<many-to-one name="brandSeries" class="com.models.BrandSeries" cascade="save-update" fetch="select" column="brandSeriesId" not-null="true" lazy="false"/>
+		<property name="model" length="50"/>
+		<property name="style" length="2"/>
+		<property name="size" length="50"/>
+		<property name="thickness" length="20"/><!-- 厚度 -->
+		<property name="chip" length="50"/>
+		<property name="chipCategory" length="2"/>
+		<property name="watchCase" length="20"/>
+		<property name="dial" length="30"/><!-- 表盘 -->
+		<property name="cover" length="50"/>
+		<property name="waterproof" length="20"/>
+		<property name="function" length="50"/>
+		<property name="pack" length="100"/>
+		<property name="originalCost" type="float"/>
+		<property name="specialCost" type="float"/>
+		<property name="onSaleTime" type="timestamp"/>
+		<property name="hunmanNum" type="long"/>
+		<property name="saleNum" type="integer"/>
+		<property name="remarks" length="100"/>
+	</class>
+</hibernate-mapping>

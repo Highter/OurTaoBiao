@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.models.Address" table="address_table" lazy="false">
+		<id name="addressId">
+			<generator class="increment"/>
+		</id>
+		<property name="receiverName" length="50"/>
+		<property name="provice" length="30"/>
+		<property name="city" length="40"/>
+		<property name="section" length="30"/>
+		<property name="address" length="50"/>
+		<property name="email" length="20"/>
+		<property name="telephone" length="50"/>
+		<property name="cellphone" length="20"/>
+		<property name="delliverTime" length="50"/>
+		<property name="addDefault" type="boolean"/>
+		<many-to-one name="user" class="com.models.User" cascade="save-update" fetch="select" column="UserId" not-null="true" lazy="false"/>
+	</class>
+</hibernate-mapping>

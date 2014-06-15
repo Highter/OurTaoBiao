@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.models.Message" table="message_table">
+		<id name="messageId">
+			<generator class="increment"/>
+		</id>
+		<property name="type" length="2"/>
+		<property name="subject" length="50"/>
+		<property name="context" length="200"/>
+		<many-to-one name="user" class="com.models.User" cascade="save-update" fetch="select" column="userId" not-null="true"/>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.models.Power" table="power_table">
+		<id name="powerId">
+			<generator class="increment"/>
+		</id>
+		<property name="looOder" length="2"/>
+		<property name="lookOD" length="2"/>
+		<property name="OhutDown" length="2"/>
+		<property name="addBd" length="2"/>
+		<property name="delBd" length="2"/>
+		<property name="upBd" length="2"/>
+		<property name="looBd" length="2"/>
+		<property name="addBdS" length="2"/>
+		<property name="delBdS" length="2"/>
+		<property name="changeBdS" length="2"/>
+		<property name="addCom" length="2"/>
+		<property name="delCom" length="2"/>
+		<property name="look_updCom" length="2"/>
+		<property name="delU" length="2"/>
+		<property name="lookU" length="2"/>
+		<property name="changeU" length="2"/>
+		<property name="delMsg" length="2"/>
+		<many-to-one name="user" class="com.models.User" cascade="save-update" fetch="select" column="userId" not-null="true" unique="true"/>
+	</class>
+</hibernate-mapping>

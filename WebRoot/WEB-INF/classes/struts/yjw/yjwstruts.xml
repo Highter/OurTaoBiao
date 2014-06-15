@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	
+	<package name="yjw1" namespace="/" extends="struts-default">
+		<action name="*Cs" class="CsAction" method="{1}">
+			<result>/CuService/yjw/jsp/CsMng.jsp</result>	
+			<result name="lookU">/CuService/yjw/jsp/CsLook.jsp</result>	
+		</action>
+	</package>
+	
+	<package name="yjw2" namespace="/" extends="struts-default">
+		<action name="*User" class="UserMAction" method="{1}">
+			<result>/CuService/yjw/jsp/UserMng.jsp</result>	
+			<result name="look1">/CuService/yjw/jsp/UserLook.jsp</result>	
+		</action>
+	</package>
+	
+	<package name="yjw3" namespace="/" extends="struts-default">
+		<action name="*OrderM" class="OrderMAction" method="{1}">
+			<result>/CuService/yjw/jsp/OrderMng.jsp</result>
+			<result name="getAllDOr">/CuService/yjw/jsp/OrderDLook.jsp</result>	
+		</action>
+	</package>
+	
+	<package name="yjw4" namespace="/" extends="struts-default">
+		<action name="*Power" class="PowerAction" method="{1}">
+			<result>/CuService/yjw/jsp/PowerMng.jsp</result>
+			<result name="addValues">/CuService/yjw/jsp/UserPower.jsp</result>	
+			<result name="setValues">/CuService/yjw/jsp/UserPowerSuccess.jsp</result>	
+			<result name="setAllValues">/CuService/yjw/jsp/UserPowerSuccess.jsp</result>	
+		</action>
+	</package>
+</struts>    

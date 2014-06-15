@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="configLocation"
+			value="classpath:hibernate.cfg.xml">
+		</property>
+	</bean>
+	<!-- ztw -->
+	<!-- 对商品的操作类注入工厂类 -->
+	<bean id="commodityDao" class="com.dao.ztw.commodity.CommodityDaoImp">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<!-- 对商品图片的操作类注入工厂类 -->
+	<bean id="pictDao" class="com.dao.ztw.picture.PictDaoImp">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<!-- 对action类进行配置 -->
+	<bean id="commoAction" class="com.actions.ztw.homePake.HeatCommodityAction">
+		<property name="commoDao" ref="commodityDao"/>
+		<property name="pictDao" ref="pictDao"/>
+	</bean>
+	
+	<!-- 商品详细页面处理的action -->
+	<bean id="prod_detailAction" class="com.actions.ztw.homePake.Prod_detailAction">
+		<property name="commoDao" ref="commodityDao"/>
+		<property name="pictDao" ref="pictDao"/>
+	</bean>
+	
+	
+	
+	<!-- 购物车处理的action -->
+	<bean id="cartAction" class="com.actions.ztw.homePake.CartAction">
+		<property name="commoDao" ref="commodityDao"/>
+		<property name="pictDao" ref="pictDao"/>
+	</bean>
+		
+	
+</beans>

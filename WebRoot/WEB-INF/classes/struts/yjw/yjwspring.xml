@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="configLocation"
+			value="classpath:hibernate.cfg.xml">
+		</property>
+	</bean>
+	
+	<!--  为dao类注入sessionFactory -->
+	<!-- 客服 -->
+	<bean name="CsMngImpl" class="com.dao.yjw.CsMng.CsMngImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!-- 普通用户 -->
+	<bean name="UserMngImpl" class="com.dao.yjw.UserMng.UserMngImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!-- 订单 -->
+	<bean name="OrderMngImpl" class="com.dao.yjw.OrderMng.OrderMngImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!-- 权限 -->
+	<bean name="PowerMngImpl" class="com.dao.yjw.PowerMng.PowerMngImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<!--  为bean类注入，有单例和多例子之分，看具体情况分析 -->
+	<bean name="user" class="com.models.User" ></bean>
+	<bean name="order" class="com.models.Order"></bean>
+	<bean name="orderDetail" class="com.models.OrderDetail"></bean>
+	<bean name="power" class="com.models.Power"></bean>
+	
+	
+	<!-- 为Action类注入 -->
+	<!-- 客服 -->
+	<bean name="CsAction" class="com.actions.yjw.CsMngAction">
+		<property name="cm" ref="CsMngImpl"></property>
+	</bean>
+	<!-- 普通用户 -->
+	<bean name="UserMAction" class="com.actions.yjw.UserMngAction">
+		<property name="userM" ref="UserMngImpl"></property>
+	</bean>
+	<!-- 订单 -->
+	<bean name="OrderMAction" class="com.actions.yjw.OrderMngAction">
+		<property name="orderM" ref="OrderMngImpl"></property>
+	</bean>
+	<!-- 权限 -->
+	<bean name="PowerAction" class="com.actions.yjw.PowerMngAction">
+		<property name="pmi" ref="PowerMngImpl"></property>
+	</bean>
+</beans>

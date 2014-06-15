@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="lyj" namespace="/" extends="struts-default">	
+	<action name="brand*" class="BrandAction"  method="{1}" >
+		<result name="SUCCESS">/CuService/yjw/jsp/BrandMng.jsp</result>
+		<result name="preUpdate">/CuService/yjw/jsp/lyjAdd/update.jsp</result>
+	</action>
+	</package>
+	
+	
+	
+	<package name="lyj2" namespace="/" extends="struts-default">
+	<action name="message*" class="MessageAction" method="{1}">
+	<result name="SUCCESS">/CuService/yjw/jsp/MsgMng.jsp</result>
+	</action>
+	</package>
+	
+	
+	<package name="lyj3" namespace="/" extends="struts-default">
+	<action name="commodity*" class="CommodityAction" method="{1}">
+	<result name="SUCCESS">/CuService/yjw/jsp/ComMng.jsp</result>
+	<result name="UPDATE">/CuService/yjw/jsp/lyjAdd/comupdate.jsp</result>
+	</action>
+	</package>
+	
+	
+	<package name="lyj1" namespace="/" extends="struts-default">
+	<action name="seriesinit" class="BrandSeriesAction" method="init">
+	<result name="SUCCESS">/CuService/yjw/jsp/BrandSMng.jsp</result>
+	</action>
+	<action name="finalPage" class="BrandSeriesAction" method="finalPage">
+	<result name="SUCCESS">/CuService/yjw/jsp/BrandSMng.jsp</result>
+	</action>
+	<action name="fristPage" class="BrandSeriesAction" method="fristPage">
+	<result name="SUCCESS">/CuService/yjw/jsp/BrandSMng.jsp</result>
+	</action>
+	<action name="prePage" class="BrandSeriesAction" method="prePage">
+	<result name="SUCCESS">/CuService/yjw/jsp/BrandSMng.jsp</result>
+	</action>
+	<action name="nextPage" class="BrandSeriesAction" method="nextPage">
+	<result name="SUCCESS">/CuService/yjw/jsp/BrandSMng.jsp</result>
+	</action>
+	<action name="boring*" class="BrandSeriesAction" method="{1}">
+		<result name="SUCCESS">/CuService/yjw/jsp/BrandSMng.jsp</result>
+		<result name="UPDATE">/CuService/yjw/jsp/lyjAdd/boringupdate.jsp</result>
+	</action>
+	</package>
+	
+</struts>

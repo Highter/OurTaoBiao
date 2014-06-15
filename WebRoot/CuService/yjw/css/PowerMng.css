@@ -1,0 +1,54 @@
+@CHARSET "UTF-8";
+* {
+	margin: 0px;
+	padding: 0px;
+}
+body{
+	overflow: hidden;
+}
+#Head {
+	position: absolute;
+	top: 0px;
+	Right: 0px;
+	height: 10%;
+	width: 100%;
+	color: blue;
+	text-align: center;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	border-bottom-color: gray;
+}
+
+#Head_title {
+	padding-top: 1.5%;
+}
+
+#Left_layout{
+	position: absolute;
+	top:10%;
+	left:0px;
+	height: 90%;
+	width: 170px;
+	text-align:center;
+	border-right-style: solid;
+	border-right-width: 1px;
+	border-bottom-color: gray;
+}
+.Menu_Left li{
+	margin-top:20%;
+	list-style: none;
+}
+.Menu_Left li a{
+	text-decoration: none;
+}
+
+#Right_layout{
+	position: absolute;
+	left: 170px;
+	top:10%;
+	padding-left: 2%;
+	padding-top: 2%;
+}
+
+#PowerShow{
+}

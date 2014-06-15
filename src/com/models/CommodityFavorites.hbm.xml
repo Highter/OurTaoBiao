@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.models.CommodityFavorites" table="CommodityFavorites_table">
+		<id name="commodityFavoritesId">
+			<generator class="increment"/>
+		</id>
+		<many-to-one name="commodities" class="com.models.Commodity" cascade="save-update"
+		fetch="select" column="commodityId"  unique="true" lazy="false" />
+		<property name="commodityName" length="50"/>
+		<property name="comFavoPrice" type="float"/>
+		<many-to-one name="user" class="com.models.User" cascade="save-update"
+		fetch="select" column="userId" not-null="true" lazy="false"/>
+	</class>
+</hibernate-mapping>

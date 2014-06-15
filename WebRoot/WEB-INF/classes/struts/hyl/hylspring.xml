@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="configLocation"
+			value="classpath:hibernate.cfg.xml">
+		</property>
+	</bean>
+	<!--  为dao类注入sessionFactory -->
+	<bean name="UserManager" class="com.dao.hyl.user.UserManagerImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean name="AddressManger" class="com.dao.hyl.address.AddressMangerImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean name="OrderManager" class="com.dao.hyl.order.OrderManagerImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean name="CollectManager" class="com.dao.hyl.collect.CollectMangerImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean name="PowerMng" class="com.dao.yjw.PowerMng.PowerMngImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<!--  为bean类注入，有单例和多例子之分，看具体情况分析 -->
+	<bean name="user" class="com.models.User" ></bean>
+	<bean name="address" class="com.models.Address" scope="prototype"></bean>
+	<bean name="order" class="com.models.Order" scope="prototype"></bean>
+	<bean name="power" class="com.models.Power"/>
+	
+	<!-- 为Action类注入 -->
+	<bean name="userAction" class="com.actions.hyl.UserAction" >
+		 <property name="um" ref="UserManager"></property>
+		 <property name="ppp" ref="power"></property>
+		 <property name="pll" ref="PowerMng"></property>
+		<!--<property name="user" ref="user"></property> -->
+	</bean>
+	
+	<bean name="addressAction" class="com.actions.hyl.AddressAction" scope="prototype">
+		<!-- <property name="address" ref="address"></property> 
+		<property name="user" ref="user"></property>-->
+		<property name="um" ref="UserManager"></property>
+		<property name="am" ref="AddressManger"></property> 
+	</bean>
+	
+	<bean name="orderAction" class="com.actions.hyl.OrderAction" >
+		<!-- <property name="order" ref="order"></property> -->
+		<property name="om" ref="OrderManager"></property>
+		<property name="um" ref="UserManager"></property>
+	</bean>
+	
+	<bean name="collectAction" class="com.actions.hyl.CollectAction">
+		<property name="cm" ref="CollectManager"></property>
+	</bean>
+	
+</beans>

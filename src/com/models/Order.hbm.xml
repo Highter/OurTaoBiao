@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.models.Order" table="order_table" lazy="false">
+		<id name="OrderId">
+			<generator class="increment"/>
+		</id>
+		<property name="payTime" type="date"/>
+		<property name="sumMoney" type="float"/>
+		<property name="payIf" type="boolean"/>
+		<property name="deliverIf" type="boolean"/>
+		<property name="makeSureIf" type="boolean"/>
+		<many-to-one name="user" class="com.models.User" cascade="save-update"
+		fetch="select" column="UserId" not-null="true" lazy="false" />
+	</class>
+</hibernate-mapping>

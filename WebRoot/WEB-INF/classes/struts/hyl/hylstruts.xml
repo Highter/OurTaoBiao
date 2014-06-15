@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="def1" namespace="/" extends="struts-default">
+		<action name="user*" class="userAction" method="{1}">
+			<result>/Customer/hyl/UserCenter/userindex.jsp</result>	
+			<result name="update">/Customer/hyl/UserCenter/usrinfo.jsp</result>	
+			<result name="servicerole">/CuService/yjw/jsp/WelcomeMng.jsp</result>
+			<result name="managerrole">/CuService/yjw/jsp/WelcomeMng.jsp</result>
+			<result name="loginfaile">/Customer/hyl/UserCenter/userindex.jsp</result>
+		</action>
+	</package>
+	
+	<package name="def2" namespace="/" extends="struts-default">
+		<action name="address*" class="addressAction" method="{1}">
+			<result >/Customer/hyl/UserCenter/address.jsp</result>		
+		</action>
+		<action name="address" class="addressAction" >
+			<result >/Customer/hyl/UserCenter/address.jsp</result>		
+		</action>
+		<action name="myaddress" class="addressAction" method="update">
+			<result >/Customer/hyl/UserCenter/update_address.jsp</result>		
+		</action>
+	</package>
+	
+	<package name="def3" namespace="/" extends="struts-default">
+		<action name="order*" class="orderAction" method="{1}">
+			<result >/Customer/hyl/UserCenter/orderList.jsp</result>
+			<result name="Look">/Customer/hyl/UserCenter/settlement_center.jsp</result>			
+		</action>
+		<action name="myorder" class="orderAction">
+			<result >/Customer/hyl/UserCenter/orderList.jsp</result>		
+		</action>
+	</package>
+	
+	<package name="def4" namespace="/" extends="struts-default">
+		<action name="collect*" class="collectAction" method="{1}">
+			<result>/Customer/hyl/UserCenter/CommodityFavorites.jsp</result>
+		</action>
+		<action name="mycollect" class="collectAction" >
+			<result>/Customer/hyl/UserCenter/CommodityFavorites.jsp</result>
+		</action>
+		
+	</package>
+	
+</struts>    
